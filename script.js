@@ -14,9 +14,24 @@ function clearCanvas(x, y, a, b) {
     }
   }
 
+let r = Math.floor(Math.random() * 100)
+let t = Math.floor(Math.random() * 100)
+
+function createSnacks(r, t) {
+  if (canvas.getContext) {
+    let ctx = canvas.getContext('2d');
+   
+    ctx.fillRect(r, t, 10, 5)
+    console.log(r, t)
+    console.log(ctx)
+  }
+}
+
+createSnacks(r, t)
+
 let x = 0
 let y = 0
-let a = 10
+let a = 20
 let b = 10
 
 function redrawSnake(){
@@ -50,6 +65,7 @@ document.addEventListener('keydown', function move(e){
             console.log(x, y, a, b)
           }      
     }
+    
 )
 }
 
