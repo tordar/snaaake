@@ -14,20 +14,22 @@ function clearCanvas(x, y, a, b) {
     }
   }
 
-let r = Math.floor(Math.random() * 100)
-let t = Math.floor(Math.random() * 100)
+function createSnacks() {
 
-function createSnacks(r, t) {
-  if (canvas.getContext) {
+  function generateSnack(){
     let ctx = canvas.getContext('2d');
-   
+    let r = Math.floor(Math.random() * 250)
+    let t = Math.floor(Math.random() * 140)
     ctx.fillRect(r, t, 10, 5)
-    console.log(r, t)
-    console.log(ctx)
+    if(ctx.fillStyle == "#000000"){
+      console.log('black')
+    }
   }
-}
 
-createSnacks(r, t)
+      generateSnack()
+    
+}
+createSnacks()
 
 let x = 0
 let y = 0
@@ -36,37 +38,32 @@ let b = 10
 
 function redrawSnake(){
 document.addEventListener('keydown', function move(e){
-        console.log(e.code)
-        let ctx = canvas.getContext('2d');
         if(e.code == "ArrowRight"){
             clearCanvas(x, y, a, b)
             x = x + 10
             draw(x, y, a, b)
-            console.log(x, y, a, b)
+            canvas.getContext('2d').fillStyle = "red"
           }
         if(e.code == "ArrowDown"){
             clearCanvas(x, y, a, b)
             y = y + 10
             draw(x, y, a, b)
-            console.log(x, y, a, b)
-
+            console.log(canvas.getContext('2d').fillStyle)
           }    
           if(e.code == "ArrowUp"){
             clearCanvas(x, y, a, b)
             y = y - 10
             draw(x, y, a, b)
-            console.log(x, y, a, b)
-
+            console.log(canvas.getContext('2d').fillStyle)
           }    
           if(e.code == "ArrowLeft"){
             clearCanvas(x, y, a, b)
             x = x - 10
             draw(x, y, a, b)
-            console.log(x, y, a, b)
+            console.log(canvas.getContext('2d').fillStyle)
           }      
     }
-    
-)
+  )
 }
 
 redrawSnake()
