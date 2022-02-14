@@ -14,20 +14,21 @@ function clearCanvas(x, y, a, b) {
     }
   }
 
+  // let r = Math.floor(Math.random() * 10)
+  // let t = Math.floor(Math.random() * 10)
+
+let r = 50
+let t = 50
+
 function createSnacks() {
 
   function generateSnack(){
     let ctx = canvas.getContext('2d');
-    let r = Math.floor(Math.random() * 250)
-    let t = Math.floor(Math.random() * 140)
-    ctx.fillRect(r, t, 10, 5)
-    if(ctx.fillStyle == "#000000"){
-      console.log('black')
-    }
-  }
 
-      generateSnack()
-    
+    ctx.fillRect(r, t, 20, 10)
+    console.log(r, t)
+  }
+  generateSnack() 
 }
 createSnacks()
 
@@ -42,13 +43,13 @@ document.addEventListener('keydown', function move(e){
             clearCanvas(x, y, a, b)
             x = x + 10
             draw(x, y, a, b)
-            canvas.getContext('2d').fillStyle = "red"
+            console.log(x,y)
           }
         if(e.code == "ArrowDown"){
             clearCanvas(x, y, a, b)
             y = y + 10
             draw(x, y, a, b)
-            console.log(canvas.getContext('2d').fillStyle)
+            console.log(x,y)
           }    
           if(e.code == "ArrowUp"){
             clearCanvas(x, y, a, b)
@@ -62,6 +63,11 @@ document.addEventListener('keydown', function move(e){
             draw(x, y, a, b)
             console.log(canvas.getContext('2d').fillStyle)
           }      
+          if (x == r && y == t){
+            r = Math.floor(Math.random() * 10) * 20
+            t = Math.floor(Math.random() * 10) * 10
+            createSnacks()
+          }
     }
   )
 }
